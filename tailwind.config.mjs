@@ -11,6 +11,7 @@ export default {
       fontFamily: {
         sans: ["Inter", ...defaultTheme.fontFamily.sans],
         serif: ["Lora", ...defaultTheme.fontFamily.serif],
+        serif: ["'EB Garamond'", ...defaultTheme.fontFamily.serif],
       },
     },
   },
