@@ -12,6 +12,11 @@ const blog = (await getCollection("blog"))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0,SITE.NUM_POSTS_ON_HOMEPAGE);
 
+const books = (await getCollection("books"))
+  .filter(post => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0,SITE.NUM_POSTS_ON_HOMEPAGE);
+
 const projects = (await getCollection("projects"))
   .filter(project => !project.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
@@ -88,6 +93,24 @@ const work = await Promise.all(
         </div>
         <ul class="flex flex-col gap-4">
           {blog.map(post => (
+            <li>
+              <ArrowCard entry={post} />
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="animate space-y-6">
+        <div class="flex flex-wrap gap-y-2 items-center justify-between">
+          <h5 class="font-semibold text-black dark:text-white">
+            books i read
+          </h5>
+          <Link href="/books">
+            See all books
+          </Link>
+        </div>
+        <ul class="flex flex-col gap-4">
+          {books.map(post => (
             <li>
               <ArrowCard entry={post} />
             </li>
