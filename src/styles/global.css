@@ -38,9 +38,14 @@ footer {
 }
 
 article {
-  @apply max-w-full prose dark:prose-invert prose-img:mx-auto prose-img:my-auto;
+  @apply max-w-full prose-xl dark:prose-invert prose-img:mx-auto prose-img:my-auto;
   @apply prose-headings:font-semibold prose-p:font-serif;
+  @apply prose-code:before:content-none prose-code:after:content-none;
   @apply prose-headings:text-black prose-headings:dark:text-white;
+  @apply dark:prose-p:text-stone-200;
+  @apply prose-p:font-medium prose-p:text-stone-800;
+  @apply prose-li:font-serif prose-li:text-xl;
+  
 }
 
 @layer utilities {
@@ -52,6 +57,19 @@ article {
   article a:hover {
     @apply text-black dark:text-white;
     @apply decoration-black/25 dark:decoration-white/50;
+  }
+
+  article :not(pre) > code {
+    @apply rounded-md bg-stone-200 px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-stone-800;
+  }
+
+
+  article ul {
+    list-style-type: disc;
+  }
+
+  article li::marker {
+    color: currentColor;
   }
 }
 
