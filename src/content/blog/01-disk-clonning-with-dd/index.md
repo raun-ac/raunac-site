@@ -9,6 +9,8 @@ date: "9 August 2026"
 
 ---
 
+![diagram-to-understand](/dc3.jpg)
+
 Hello ! Yesterday, i decided to finally upgrade my linux machine(Ubuntu) from 128 GB ssd to 512 GB ssd. I didn't wanted to setup everything from scratch in my new ssd, so i decided that i will just clone my old ssd onto the new one. This will allow my laptop to run exactly as before, same files, same applications, same projects dependencies, same vs code settings, same ssh keys, everything but with extra space. 
 
 

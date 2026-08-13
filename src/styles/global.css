@@ -44,7 +44,7 @@ article {
   @apply prose-headings:text-black prose-headings:dark:text-white;
   @apply dark:prose-p:text-stone-200;
   @apply prose-p:font-medium prose-p:text-stone-800;
-  @apply prose-li:font-serif prose-li:text-xl;
+  @apply prose-li:font-serif prose-li:text-xl prose-li:text-stone-800;
   
 }
 
