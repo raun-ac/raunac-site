@@ -46,7 +46,7 @@ There i saw the usb option listed in the boot option menu and felt a sigh of rel
 
 #### `dd` command
 
-To clone an exact copy of my old ssd onto my new ssd, i used the `dd` command. It is often nicknamed "disk destroyer" because it performs an exact bit-by-by data duplication and can wipe out your disk if used incorrectly. But, if it is used correctly, it is a very powerful and invaluable command for creating system backups, cloning drives and creating bootable USB installation media.
+To clone an exact copy of my old ssd onto my new ssd, i used the `dd` command. It is often nicknamed "disk destroyer" because it performs an exact bit-by-bit data duplication and can wipe out your disk if used incorrectly. But, if it is used correctly, it is a very powerful and invaluable command for creating system backups, cloning drives and creating bootable USB installation media.
 
 Before using the command, i noted down the correct name of my attatched disks. To do this, i used the `lsblk` (list block devices) command.
 
