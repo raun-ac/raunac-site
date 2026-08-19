@@ -1,3 +1,5 @@
+@import "katex/dist/katex.min.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -45,12 +47,13 @@ article {
   @apply dark:prose-p:text-stone-200;
   @apply prose-p:font-medium prose-p:text-stone-800;
   @apply prose-li:font-serif prose-li:text-xl prose-li:text-stone-800;
+  @apply dark:prose-li:text-stone-200;
   
 }
 
 @layer utilities {
   article a {
-    @apply font-sans text-current underline underline-offset-2;
+    @apply font-sans text-black dark:text-white underline underline-offset-2;
     @apply decoration-black/15 dark:decoration-white/30;
     @apply transition-colors duration-300 ease-in-out;
   }
