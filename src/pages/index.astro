@@ -1,0 +1,156 @@
+---
+import { getCollection } from "astro:content";
+import Container from "@components/Container.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import ArrowCard from "@components/ArrowCard.astro";
+import Link from "@components/Link.astro";
+import { SITE, HOME, SOCIALS } from "@consts";
+
+const blog = (await getCollection("blog"))
+  .filter(post => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0,SITE.NUM_POSTS_ON_HOMEPAGE);
+
+const books = (await getCollection("books"))
+  .filter(post => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0,SITE.NUM_POSTS_ON_HOMEPAGE);
+
+const projects = (await getCollection("projects"))
+  .filter(project => !project.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0,SITE.NUM_PROJECTS_ON_HOMEPAGE);
+
+
+
+---
+
+<PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
+  <Container>
+  <div class="font-serif">
+    <h2 class="animate font-semibold text-6xl text-black dark:text-white mb-10">
+      Raunak Kumar
+    </h2>
+    <div class="space-y-16">
+      <section>
+        <article class="space-y-8 text-[17px] leading-8">
+          
+          <div class="animate">
+            <h3 class="font-semibold text-black dark:text-white mb-3">
+              Who am I ?
+            </h3>
+            <ul class="list-disc ml-5 space-y-3 opacity-90 text-lg leading-8">
+              <li>
+                <span class="font-medium text-black dark:text-white">I am a computer science undergrad currently in my junior year</span>.
+              </li>
+              <li>
+                <span class="font-medium text-black dark:text-white">Currently working on backend infrastructure projects, focusing on performance, concurrency, and distributed systems</span>.
+              </li>
+              <li>
+                <span class="font-medium text-black dark:text-white">At the moment, I'm building a high-performance distributed rate limiter in Go to better understand concurrency and the Token Bucket algorithm</span>.
+              </li>
+            </ul>
+          </div>
+
+          <div class="animate">
+            <h3 class="font-semibold text-black dark:text-white mb-3">
+              What i'm interested in:
+            </h3>
+            <ul class="list-disc ml-5 space-y-3 opacity-90 text-lg leading-8">
+              <li>
+                <span class="font-medium text-black dark:text-white">Competitive Programming. I actively participate in codeforces contests, primarily writing solutions in C++.</span>
+              </li>
+              <li>
+                <span class="font-medium text-black dark:text-white">AI Infrastructure & Systems Engineering. </span> <a href="https://github.com/raun-ac/simd-euclidean-benchmark" class="inline text-sm text-black dark:text-white hover:underline"> SIMD AVX-512 Memory Wall Benchmark </a>
+              </li>
+              <li>
+                <span class="font-medium text-black dark:text-white">Reading. I enjoy reading about history, philosophy and science fiction.</span>
+              </li>
+            </ul>
+          </div>
+
+        </article>
+      </section>
+
+       <section class="animate space-y-6">
+        <div class="flex flex-wrap gap-y-2 items-center justify-between">
+          <h5 class="text-xl font-semibold text-black dark:text-white">
+            what i have built
+          </h5>
+          <Link href="/projects">
+            See all projects
+          </Link>
+        </div>
+        <ul class="flex flex-col gap-4">
+          {projects.map(project => (
+            <li>
+              <ArrowCard entry={project} />
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="animate space-y-6">
+        <div class="flex flex-wrap gap-y-2 items-center justify-between">
+          <h5 class="text-xl font-semibold text-black dark:text-white">
+            Writing
+          </h5>
+          <Link href="/blog">
+            See all posts
+          </Link>
+        </div>
+        <ul class="flex flex-col gap-4">
+          {blog.map(post => (
+            <li>
+              <ArrowCard entry={post} />
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="animate space-y-6">
+        <div class="flex flex-wrap gap-y-2 items-center justify-between">
+          <h5 class="text-xl font-semibold text-black dark:text-white">
+            Reading
+          </h5>
+          <Link href="/books">
+            See all books
+          </Link>
+        </div>
+        <ul class="flex flex-col gap-4">
+          {books.map(post => (
+            <li>
+              <ArrowCard entry={post} />
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="text-xl animate space-y-4">
+        <h5 class="text-xl font-semibold text-black dark:text-white">
+          Let's Connect
+        </h5>
+        <article>
+          <p class="text-xl leading-8">
+            Feel free to reach out if you'd like to talk, collaborate, or simply say hello
+          </p>
+        </article>
+        <ul class="flex flex-wrap gap-2">
+          {SOCIALS.map(SOCIAL => (
+            <li class="flex gap-x-2 text-nowrap">
+              <Link href={SOCIAL.HREF} external aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}>
+                {SOCIAL.NAME}
+              </Link>
+              {"/"}
+            </li>
+          ))}
+          <li class="line-clamp-1">
+            <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.NAME}`}>
+              {SITE.EMAIL}
+            </Link>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </Container>
+</PageLayout>
