@@ -30,7 +30,7 @@ export const BOOKS: Metadata = {
 
 export const SOCIALS: Socials = [
   { 
-    NAME: "twitter-x",
+    NAME: "x",
     HREF: "https://x.com/raun_ac",
   },
   { 
